@@ -7,21 +7,28 @@ import { Colors, NeutralColor, PrimaryColor } from "@/constants/Colors";
 type SettingProps = {
   title: string;
   icon: ReactElement<SpecificIconProps>;
+  iconColor: string;
   value?: string;
   onPress?: () => void;
 };
 
-export default function Setting({ title, icon, value, onPress }: SettingProps) {
+export default function Setting({
+  title,
+  icon,
+  iconColor,
+  value,
+  onPress,
+}: SettingProps) {
   return (
     <Pressable onPress={onPress} style={styles.setting}>
       <View style={styles.titleContainer}>
-        <View style={styles.iconContainer}>
+        <View style={[styles.iconContainer, { backgroundColor: iconColor }]}>
           {React.cloneElement(icon, { color: Colors.light.background })}
         </View>
         <ThemedText variant="semibold">{title}</ThemedText>
       </View>
       <View style={styles.valueContainer}>
-        <Text style={styles.value}>{value}</Text>
+        {value && <Text style={styles.value}>{value}</Text>}
         <View style={styles.chevronContainer}>
           <ChevronLeftIcon color={Colors.light.tabIconDefault} />
         </View>
@@ -47,7 +54,6 @@ const styles = StyleSheet.create({
     width: 30,
     height: 30,
     borderRadius: 10,
-    backgroundColor: PrimaryColor,
     padding: 4,
   },
   valueContainer: {

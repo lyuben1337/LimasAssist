@@ -1,4 +1,4 @@
-# Welcome to Sitmobile 👋
+# Welcome to LimasAssist 👋
 
 This is an Android/iOS app for communication with [Sitman](https://gitlab.schulen-leipzig.de/apps/sitman)
 

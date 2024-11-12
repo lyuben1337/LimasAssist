@@ -6,14 +6,20 @@
 export const PrimaryColor = "#509CDB";
 export const NeutralColor = "#687076";
 
+export const SettingsIconColor = {
+  theme: "#509CDB",
+  language: "#fb923c",
+  about: "#22c55e",
+};
+
 export const Colors = {
   light: {
     text: "#11181C",
-    background: "#ecedee",
+    background: "#fff",
     tabIconDefault: "#687076",
     tabIconSelected: PrimaryColor,
-    settings: "#e4e4e4",
-    divider: "#d5d5d5",
+    settings: "#f4f4f4",
+    divider: "#dadada",
     statusbar: "dark",
   },
   dark: {

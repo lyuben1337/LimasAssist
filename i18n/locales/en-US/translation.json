@@ -5,7 +5,8 @@
   "settings": {
     "title": {
       "theme": "Theme",
-      "language": "Language"
+      "language": "Language",
+      "about": "About this app"
     },
     "theme": {
       "system": "System",

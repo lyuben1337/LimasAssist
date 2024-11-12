@@ -5,7 +5,8 @@
   "settings": {
     "title": {
       "theme": "Thema",
-      "language": "Sprache"
+      "language": "Sprache",
+      "about": "Über diese App"
     },
     "theme": {
       "system": "System",
