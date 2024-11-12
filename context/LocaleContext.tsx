@@ -20,7 +20,7 @@ const resources = {
 
 const initI18n = async (locale: Locale) => {
   if (!locale) {
-    locale = Localization.getLocales()[0].languageTag as Locale;
+    locale = "de-DE";
   }
 
   await i18n.use(initReactI18next).init({

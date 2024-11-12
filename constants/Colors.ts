@@ -4,6 +4,7 @@
  */
 
 export const PrimaryColor = "#509CDB";
+export const NeutralColor = "#687076";
 
 export const Colors = {
   light: {

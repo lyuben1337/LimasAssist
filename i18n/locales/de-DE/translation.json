@@ -1,3 +1,20 @@
 {
-
+  "screens": {
+    "settings": "Einstellungen"
+  },
+  "settings": {
+    "title": {
+      "theme": "Thema",
+      "language": "Sprache"
+    },
+    "theme": {
+      "system": "System",
+      "light": "Licht",
+      "dark": "Dunkel"
+    },
+    "locale": {
+      "en-US": "Englisch",
+      "de-DE": "Deutsch"
+    }
+  }
 }

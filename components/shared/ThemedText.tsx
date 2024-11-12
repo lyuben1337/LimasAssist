@@ -5,8 +5,8 @@ import { useThemeColor } from "@/hooks/useThemeColor";
 export type ThemedTextProps = TextProps & {
   lightColor?: string;
   darkColor?: string;
-  size?: "default";
-  variant?: "default";
+  size?: "default" | "small";
+  variant?: "default" | "semibold";
 };
 
 export function ThemedText({
@@ -14,25 +14,35 @@ export function ThemedText({
   lightColor,
   darkColor,
   size = "default",
+  variant = "default",
   ...rest
 }: ThemedTextProps) {
   const color = useThemeColor("text", { light: lightColor, dark: darkColor });
 
   return (
     <Text
-      style={[
-        { color },
-        size === "default" ? styles.default : undefined,
-        style,
-      ]}
+      style={[{ color }, sizeStyles[size], variantStyles[variant], style]}
       {...rest}
     />
   );
 }
 
-const styles = StyleSheet.create({
+const sizeStyles = StyleSheet.create({
   default: {
     fontSize: 16,
     lineHeight: 24,
+  },
+  small: {
+    fontSize: 12,
+    lineHeight: 18,
+  },
+});
+
+const variantStyles = StyleSheet.create({
+  default: {
+    fontWeight: "normal",
+  },
+  semibold: {
+    fontWeight: "600",
   },
 });
