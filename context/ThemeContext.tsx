@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect } from "react";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { setStatusBarStyle } from "expo-status-bar";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export type Theme = "light" | "dark" | "system";
 type ThemeContextType = {

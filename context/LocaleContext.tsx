@@ -1,12 +1,12 @@
 import React, { createContext, useState, useEffect } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import translationEn from "@/i18n/locales/en-US/translation.json";
-import translationUk from "@/i18n/locales/uk-UA/translation.json";
+import translationDe from "@/i18n/locales/de-DE/translation.json";
 import i18n from "i18next";
 import * as Localization from "expo-localization";
 import { initReactI18next } from "react-i18next";
 
-export type Locale = "en-US" | "uk-UA";
+export type Locale = "de-DE" | "en-US";
 
 type LocaleContextType = {
   locale: Locale;
@@ -14,8 +14,8 @@ type LocaleContextType = {
 };
 
 const resources = {
+  "de-DE": { translation: translationDe },
   "en-US": { translation: translationEn },
-  "uk-UA": { translation: translationUk },
 };
 
 const initI18n = async (locale: Locale) => {
@@ -27,20 +27,20 @@ const initI18n = async (locale: Locale) => {
     compatibilityJSON: "v3",
     resources,
     lng: locale,
-    fallbackLng: "en-US",
+    fallbackLng: "de-DE",
     interpolation: { escapeValue: false },
   });
 };
 
 export const LocaleContext = createContext<LocaleContextType>({
-  locale: "en-US",
+  locale: "de-DE",
   toggleLocale: () => {},
 });
 
 export default function LocaleProvider({
   children,
 }: React.PropsWithChildren<{}>) {
-  const [locale, setLocale] = useState<Locale>("en-US");
+  const [locale, setLocale] = useState<Locale>("de-DE");
   const [isI18nInitialized, setIsI18nInitialized] = useState(false);
 
   useEffect(() => {
