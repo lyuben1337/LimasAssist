@@ -20,7 +20,6 @@ export default function AboutScreen() {
       />
       <ThemedView style={styles.container}>
         <ThemedText>{nativeApplicationVersion}</ThemedText>
-        <ThemedText>Created by Vladyslav Liubchyk</ThemedText>
       </ThemedView>
     </>
   );

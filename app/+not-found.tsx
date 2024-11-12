@@ -1,23 +1,30 @@
-import { Link, Stack } from "expo-router";
+import { Stack } from "expo-router";
 import { StyleSheet } from "react-native";
 import { ThemedView } from "@/components/shared/ThemedView";
 import { ThemedText } from "@/components/shared/ThemedText";
+import { ThemedLink } from "@/components/shared/ThemedLink";
+import { useTranslation } from "react-i18next";
 import { useThemeColor } from "@/hooks/useThemeColor";
 
 export default function NotFoundScreen() {
+  const { t } = useTranslation();
+
   return (
     <>
       <Stack.Screen
         options={{
-          title: "Oops! Not Found",
+          title: t("screens.not-found"),
           headerTitleStyle: { color: useThemeColor("text") },
           headerStyle: { backgroundColor: useThemeColor("background") },
           headerBackTitleVisible: false,
         }}
       />
       <ThemedView style={styles.container}>
-        <ThemedText>This screen doesn't exist.</ThemedText>
-        <Link href="/(tabs)/settings">Settings</Link>
+        <ThemedText>{t("not-found.screen-not-exist")}</ThemedText>
+        <ThemedLink
+          href={"/(tabs)/settings"}
+          label={t("not-found.home-page")}
+        />
       </ThemedView>
     </>
   );

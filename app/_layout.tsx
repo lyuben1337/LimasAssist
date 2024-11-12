@@ -3,6 +3,7 @@ import { useFonts } from "expo-font";
 import React, { useEffect } from "react";
 import ThemeProvider from "@/context/ThemeContext";
 import LocaleProvider from "@/context/LocaleContext";
+import { useThemeColor } from "@/hooks/useThemeColor";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();

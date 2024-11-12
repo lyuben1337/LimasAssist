@@ -1,6 +1,11 @@
 {
   "screens": {
-    "settings": "Settings"
+    "settings": "Settings",
+    "not-found": "Oops! Not Found"
+  },
+  "not-found": {
+    "home-page": "Home Page",
+    "screen-not-exist": "Screen doesn't exist"
   },
   "settings": {
     "title": {
