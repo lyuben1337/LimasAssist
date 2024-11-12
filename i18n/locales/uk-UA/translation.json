@@ -1,0 +1,34 @@
+{
+  "screens": {
+    "settings": "Налаштування"
+  },
+  "home": {
+    "importPhoto": "Завантажити фото",
+    "edit": "РЕДАГУВАТИ"
+  },
+  "edit": {
+    "brightness": "Яскравість",
+    "contrast": "Контраст",
+    "exitConfirmation": {
+      "title": "Ви впевнені?",
+      "message": "Ви втратите всі незбережені зміни.",
+      "cancel": "Скасувати",
+      "confirm": "Вийти"
+    }
+  },
+  "settings": {
+    "title": {
+      "theme": "Тема",
+      "language": "Мова"
+    },
+    "theme": {
+      "system": "Системна",
+      "light": "Світла",
+      "dark": "Темна"
+    },
+    "locale": {
+      "en-US": "Англійська",
+      "uk-UA": "Українська"
+    }
+  }
+}

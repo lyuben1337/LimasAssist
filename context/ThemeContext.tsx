@@ -1,0 +1,51 @@
+import React, { createContext, useState, useEffect } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { setStatusBarStyle } from "expo-status-bar";
+
+export type Theme = "light" | "dark" | "system";
+type ThemeContextType = {
+  theme: Theme;
+  toggleTheme: (theme: Theme) => void;
+};
+
+export const ThemeContext = createContext<ThemeContextType>({
+  theme: "system",
+  toggleTheme: () => {},
+});
+
+export default function ThemeProvider({
+  children,
+}: React.PropsWithChildren<{}>) {
+  const [theme, setTheme] = useState<Theme>("system");
+
+  useEffect(() => {
+    const getTheme = async () => {
+      try {
+        const savedTheme = await AsyncStorage.getItem("theme");
+        if (savedTheme && ["light", "dark", "system"].includes(savedTheme)) {
+          setTheme(savedTheme as Theme);
+          if (savedTheme !== "system") {
+            setStatusBarStyle(savedTheme === "light" ? "dark" : "light");
+          }
+        }
+      } catch (error) {
+        console.log("Error loading theme:", error);
+      }
+    };
+    getTheme();
+  }, []);
+
+  const toggleTheme = async (newTheme: Theme) => {
+    setTheme(newTheme);
+    if (newTheme !== "system") {
+      setStatusBarStyle(newTheme === "light" ? "dark" : "light");
+    } else setStatusBarStyle("auto");
+    await AsyncStorage.setItem("theme", newTheme);
+  };
+
+  return (
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
+}
