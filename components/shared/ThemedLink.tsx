@@ -1,11 +1,10 @@
 import { TextStyle } from "react-native";
-import { useThemeColor } from "@/hooks/useThemeColor";
 import { Href, Link } from "expo-router";
 import { ThemedText, ThemedTextProps } from "@/components/shared/ThemedText";
-import { Colors, PrimaryColor } from "@/constants/Colors";
+import { PrimaryColor } from "@/constants/Colors";
 
 export type ThemedLinkProps = {
-  href: Href<string | object>;
+  href: Href;
   label?: string;
   size?: ThemedTextProps["size"];
   variant?: ThemedTextProps["variant"];

@@ -5,9 +5,11 @@ import { ThemedText } from "@/components/shared/ThemedText";
 import { ThemedLink } from "@/components/shared/ThemedLink";
 import { useTranslation } from "react-i18next";
 import { useThemeColor } from "@/hooks/useThemeColor";
+import { useAuth } from "@/hooks/useAuth";
 
 export default function NotFoundScreen() {
   const { t } = useTranslation();
+  const { isAuthenticated } = useAuth();
 
   return (
     <>
@@ -16,13 +18,12 @@ export default function NotFoundScreen() {
           title: t("screens.not-found"),
           headerTitleStyle: { color: useThemeColor("text") },
           headerStyle: { backgroundColor: useThemeColor("background") },
-          headerBackTitleVisible: false,
         }}
       />
-      <ThemedView style={styles.container}>
+      <ThemedView variant="background" style={styles.container}>
         <ThemedText>{t("not-found.screen-not-exist")}</ThemedText>
         <ThemedLink
-          href={"/(tabs)/settings"}
+          href={isAuthenticated ? "/(tabs)/settings" : "/auth/login"}
           label={t("not-found.home-page")}
         />
       </ThemedView>

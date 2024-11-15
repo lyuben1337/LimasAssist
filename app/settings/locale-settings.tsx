@@ -26,7 +26,7 @@ export default function LocaleSettingsScreen() {
           headerBackTitle: t("screens.settings"),
         }}
       />
-      <ThemedView style={styles.container}>
+      <ThemedView variant="background" style={styles.container}>
         <Options<Locale>
           collection={locales}
           selected={(key) => key === locale}

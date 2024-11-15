@@ -27,7 +27,7 @@ export default function ThemeSettingsScreen() {
           headerBackTitle: t("screens.settings"),
         }}
       />
-      <ThemedView style={styles.container}>
+      <ThemedView variant="background" style={styles.container}>
         <Options<Theme>
           collection={themes}
           selected={(key) => key === theme}

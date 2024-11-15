@@ -18,8 +18,8 @@ export default function AboutScreen() {
           headerBackTitle: t("screens.settings"),
         }}
       />
-      <ThemedView style={styles.container}>
-        <ThemedText>{nativeApplicationVersion}</ThemedText>
+      <ThemedView variant="background" style={styles.container}>
+        <ThemedText>LimasAssist {nativeApplicationVersion}</ThemedText>
       </ThemedView>
     </>
   );

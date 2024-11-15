@@ -1,23 +1,28 @@
 import React, { useContext } from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet } from "react-native";
 import { ThemedView } from "@/components/shared/ThemedView";
 import { ThemeContext } from "@/context/ThemeContext";
 import Setting from "@/components/settings/Setting";
 import { GlobeIcon, InfoIcon, ThemeIcon } from "@/components/shared/Icons";
-import { useThemeColor } from "@/hooks/useThemeColor";
 import { useTranslation } from "react-i18next";
 import { router, Tabs } from "expo-router";
 import { Divider } from "@/components/shared/Divider";
 import { SettingsIconColor } from "@/constants/Colors";
+import { useAuth } from "@/hooks/useAuth";
 
 export default function SettingsScreen() {
   const { t, i18n } = useTranslation();
   const { theme } = useContext(ThemeContext);
-  const settingsColor = useThemeColor("settings");
+  const { logout } = useAuth();
+
+  const handleLogout = async () => {
+    await logout();
+    router.navigate("/auth/login");
+  };
 
   return (
-    <ThemedView style={styles.container}>
-      <View style={[{ backgroundColor: settingsColor }, styles.settings]}>
+    <ThemedView variant="background" style={styles.container}>
+      <ThemedView style={styles.settings}>
         <Setting
           title={t("settings.title.language")}
           icon={<GlobeIcon />}
@@ -46,7 +51,14 @@ export default function SettingsScreen() {
             router.navigate("/settings/about");
           }}
         />
-      </View>
+        <Divider style={styles.divider} />
+        <Setting
+          title={t("settings.title.logout")}
+          icon={<InfoIcon />}
+          iconColor={SettingsIconColor.about}
+          onPress={handleLogout}
+        />
+      </ThemedView>
     </ThemedView>
   );
 }

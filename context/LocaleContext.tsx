@@ -3,7 +3,6 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import translationEn from "@/i18n/locales/en-US/translation.json";
 import translationDe from "@/i18n/locales/de-DE/translation.json";
 import i18n from "i18next";
-import * as Localization from "expo-localization";
 import { initReactI18next } from "react-i18next";
 
 export type Locale = "de-DE" | "en-US";

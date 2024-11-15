@@ -1,5 +1,5 @@
-import React, { createContext, useState, useEffect } from "react";
-import { setStatusBarStyle } from "expo-status-bar";
+import React, {createContext, useEffect, useState} from "react";
+import {setStatusBarStyle} from "expo-status-bar";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export type Theme = "light" | "dark" | "system";

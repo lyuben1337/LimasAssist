@@ -22,5 +22,11 @@
       "en-US": "Englisch",
       "de-DE": "Deutsch"
     }
+  },
+  "errors": {
+    "invalid-credentials": "Ungültiger Benutzername oder Passwort."
+  },
+  "shared": {
+    "login": "Einloggen"
   }
 }

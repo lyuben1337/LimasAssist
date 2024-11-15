@@ -3,9 +3,8 @@ import { useFonts } from "expo-font";
 import React, { useEffect } from "react";
 import ThemeProvider from "@/context/ThemeContext";
 import LocaleProvider from "@/context/LocaleContext";
-import { useThemeColor } from "@/hooks/useThemeColor";
+import { AuthProvider } from "@/context/AuthContext";
 
-// Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
@@ -24,13 +23,15 @@ export default function RootLayout() {
   }
 
   return (
-    <LocaleProvider>
-      <ThemeProvider>
-        <Stack screenOptions={{ headerShadowVisible: false }}>
-          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-          <Stack.Screen name="+not-found" />
-        </Stack>
-      </ThemeProvider>
-    </LocaleProvider>
+    <AuthProvider>
+      <LocaleProvider>
+        <ThemeProvider>
+          <Stack screenOptions={{ headerShadowVisible: false }}>
+            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+            <Stack.Screen name="+not-found" />
+          </Stack>
+        </ThemeProvider>
+      </LocaleProvider>
+    </AuthProvider>
   );
 }

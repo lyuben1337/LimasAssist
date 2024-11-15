@@ -1,7 +1,7 @@
 {
   "screens": {
     "settings": "Settings",
-    "not-found": "Oops! Not Found"
+    "not-found": "Oops! Not Found",
   },
   "not-found": {
     "home-page": "Home Page",
@@ -22,5 +22,11 @@
       "en-US": "English",
       "de-DE": "German"
     }
+  },
+  "errors": {
+    "invalid-credentials": "Invalid login or password."
+  },
+  "shared": {
+    "login": "Login"
   }
 }
