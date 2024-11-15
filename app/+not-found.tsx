@@ -5,7 +5,6 @@ import { ThemedText } from "@/components/shared/ThemedText";
 import { ThemedLink } from "@/components/shared/ThemedLink";
 import { useTranslation } from "react-i18next";
 import { useThemeColor } from "@/hooks/useThemeColor";
-import { useAuth } from "@/hooks/useAuth";
 
 export default function NotFoundScreen() {
   const { t } = useTranslation();
@@ -21,7 +20,7 @@ export default function NotFoundScreen() {
       />
       <ThemedView variant="background" style={styles.container}>
         <ThemedText>{t("not-found.screen-not-exist")}</ThemedText>
-        <ThemedLink href={"/_sitemap"} label={t("not-found.home-page")} />
+        <ThemedLink href={"/"} label={t("not-found.home-page")} />
       </ThemedView>
     </>
   );

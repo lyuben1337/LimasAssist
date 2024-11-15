@@ -5,6 +5,7 @@ import ThemeProvider from "@/context/ThemeContext";
 import LocaleProvider from "@/context/LocaleContext";
 import { AuthProvider, AuthContext } from "@/context/AuthContext";
 import { useAuth } from "@/hooks/useAuth";
+import PortalProvider from "@/context/PortalContext";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -24,14 +25,17 @@ export default function RootLayout() {
   }
 
   return (
-    <LocaleProvider>
-      <ThemeProvider>
-        <AuthProvider>
-          <Stack screenOptions={{ headerShadowVisible: false }}>
-            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-          </Stack>
-        </AuthProvider>
-      </ThemeProvider>
-    </LocaleProvider>
+    <PortalProvider>
+      <LocaleProvider>
+        <ThemeProvider>
+          <AuthProvider>
+            <Stack screenOptions={{ headerShadowVisible: false }}>
+              <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+              <Stack.Screen name="(screens)" options={{ headerShown: false }} />
+            </Stack>
+          </AuthProvider>
+        </ThemeProvider>
+      </LocaleProvider>
+    </PortalProvider>
   );
 }

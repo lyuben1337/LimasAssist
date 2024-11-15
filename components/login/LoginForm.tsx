@@ -1,4 +1,4 @@
-import { StyleSheet, View } from "react-native";
+import { Keyboard, StyleSheet, View } from "react-native";
 import { ZammadIcon } from "@/components/shared/Icons";
 import ThemedInput from "@/components/shared/ThemedInput";
 import { ThemedButton } from "@/components/shared/ThemedButton";
@@ -19,10 +19,11 @@ export default function LoginForm({ setIsLoading }: LoginFormProps) {
   const [password, setPassword] = useState("");
 
   const handleLogin = async () => {
+    Keyboard.dismiss();
     setIsLoading(true);
     try {
       await login(username, password);
-      router.navigate("/(tabs)");
+      router.navigate("/");
     } catch (error) {
       alert(t("errors.invalid-credentials"));
     } finally {

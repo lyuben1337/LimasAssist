@@ -3,6 +3,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const ZAMMAD_BASE_URL = "https://ticket.schulen-leipzig.de/api/v1";
 export const ZAMMAD_TOKEN_KEY = "zammad_access_token";
+export const ZAMMAD_TOKEN_NAME_KEY = "zammad_access_token_name";
 
 export const ZammadClient = axios.create({
   baseURL: ZAMMAD_BASE_URL,

@@ -1,10 +1,10 @@
 import { useTranslation } from "react-i18next";
-import { Stack } from "expo-router";
+import { router, Stack } from "expo-router";
 import { useThemeColor } from "@/hooks/useThemeColor";
 import { ThemedView } from "@/components/shared/ThemedView";
 import { StyleSheet } from "react-native";
 import { useState } from "react";
-import LoginForm from "@/components/auth/LoginForm";
+import LoginForm from "@/components/login/LoginForm";
 import { LoadingOverlay } from "@/components/shared/LoadingOverlay";
 
 export default function LoginScreen() {

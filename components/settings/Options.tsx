@@ -3,6 +3,7 @@ import { Divider } from "@/components/shared/Divider";
 import { StyleSheet, View } from "react-native";
 import React from "react";
 import { useThemeColor } from "@/hooks/useThemeColor";
+import { ThemedView } from "@/components/shared/ThemedView";
 
 type OptionsProps<T extends React.Key> = {
   collection: Array<{ key: T; title: string; subtitle?: string }>;
@@ -15,10 +16,8 @@ export function Options<T extends React.Key>({
   selected,
   onSelect,
 }: OptionsProps<T>) {
-  const optionsColor = useThemeColor("settings");
-
   return (
-    <View style={[{ backgroundColor: optionsColor }, styles.optionsContainer]}>
+    <ThemedView style={styles.optionsContainer}>
       {collection.map(({ key, title, subtitle }) => (
         <React.Fragment key={key}>
           <Option
@@ -32,7 +31,7 @@ export function Options<T extends React.Key>({
           )}
         </React.Fragment>
       ))}
-    </View>
+    </ThemedView>
   );
 }
 
