@@ -9,7 +9,6 @@ import { useAuth } from "@/hooks/useAuth";
 
 export default function NotFoundScreen() {
   const { t } = useTranslation();
-  const { isAuthenticated } = useAuth();
 
   return (
     <>
@@ -22,10 +21,7 @@ export default function NotFoundScreen() {
       />
       <ThemedView variant="background" style={styles.container}>
         <ThemedText>{t("not-found.screen-not-exist")}</ThemedText>
-        <ThemedLink
-          href={isAuthenticated ? "/(tabs)/settings" : "/auth/login"}
-          label={t("not-found.home-page")}
-        />
+        <ThemedLink href={"/_sitemap"} label={t("not-found.home-page")} />
       </ThemedView>
     </>
   );

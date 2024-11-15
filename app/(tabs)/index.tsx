@@ -5,7 +5,7 @@ import { ThemeContext } from "@/context/ThemeContext";
 import Setting from "@/components/settings/Setting";
 import { GlobeIcon, InfoIcon, ThemeIcon } from "@/components/shared/Icons";
 import { useTranslation } from "react-i18next";
-import { router, Tabs } from "expo-router";
+import { router } from "expo-router";
 import { Divider } from "@/components/shared/Divider";
 import { SettingsIconColor } from "@/constants/Colors";
 import { useAuth } from "@/hooks/useAuth";
@@ -17,7 +17,7 @@ export default function SettingsScreen() {
 
   const handleLogout = async () => {
     await logout();
-    router.navigate("/auth/login");
+    router.navigate("/login");
   };
 
   return (

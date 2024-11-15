@@ -1,9 +1,10 @@
 import { SplashScreen, Stack } from "expo-router";
 import { useFonts } from "expo-font";
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import ThemeProvider from "@/context/ThemeContext";
 import LocaleProvider from "@/context/LocaleContext";
-import { AuthProvider } from "@/context/AuthContext";
+import { AuthProvider, AuthContext } from "@/context/AuthContext";
+import { useAuth } from "@/hooks/useAuth";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -23,15 +24,14 @@ export default function RootLayout() {
   }
 
   return (
-    <AuthProvider>
-      <LocaleProvider>
-        <ThemeProvider>
+    <LocaleProvider>
+      <ThemeProvider>
+        <AuthProvider>
           <Stack screenOptions={{ headerShadowVisible: false }}>
             <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-            <Stack.Screen name="+not-found" />
           </Stack>
-        </ThemeProvider>
-      </LocaleProvider>
-    </AuthProvider>
+        </AuthProvider>
+      </ThemeProvider>
+    </LocaleProvider>
   );
 }

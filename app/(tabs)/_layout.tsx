@@ -1,10 +1,17 @@
-import { router, Tabs } from "expo-router";
+import { router, Stack, Tabs } from "expo-router";
 import { SettingsIcon } from "@/components/shared/Icons";
 import { useThemeColor } from "@/hooks/useThemeColor";
 import { useTranslation } from "react-i18next";
+import { useAuth } from "@/hooks/useAuth";
+import React from "react";
 
 export default function TabsLayout() {
   const { t } = useTranslation();
+  const { isAuthenticated } = useAuth();
+
+  if (isAuthenticated !== undefined && !isAuthenticated) {
+    router.replace("/login");
+  }
 
   return (
     <Tabs
@@ -18,7 +25,7 @@ export default function TabsLayout() {
       }}
     >
       <Tabs.Screen
-        name="settings"
+        name="index"
         options={{
           headerTitle: t("screens.settings"),
           tabBarIcon: ({ color }) => <SettingsIcon size={30} color={color} />,

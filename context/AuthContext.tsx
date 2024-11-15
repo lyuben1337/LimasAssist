@@ -4,19 +4,21 @@ import { ZAMMAD_TOKEN_KEY } from "@/api/zammad/ZammadClient";
 import * as AuthAPI from "@/api/zammad/auth";
 
 type AuthContextType = {
-  isAuthenticated: boolean;
+  isAuthenticated: boolean | undefined;
   login: (username: string, password: string) => Promise<void>;
   logout: () => Promise<void>;
 };
 
 export const AuthContext = createContext<AuthContextType>({
-  isAuthenticated: false,
+  isAuthenticated: undefined,
   login: async () => {},
   logout: async () => {},
 });
 
 export function AuthProvider({ children }: React.PropsWithChildren<{}>) {
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | undefined>(
+    undefined,
+  );
 
   useEffect(() => {
     const getToken = async () => {
