@@ -2,6 +2,7 @@ import React, { createContext, useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ZAMMAD_TOKEN_KEY } from "@/api/zammad/ZammadClient";
 import * as AuthAPI from "@/api/zammad/auth";
+import { getCurrentUserInfo } from "@/api/zammad/users";
 
 type AuthContextType = {
   isAuthenticated: boolean | undefined;
@@ -21,11 +22,15 @@ export function AuthProvider({ children }: React.PropsWithChildren<{}>) {
   );
 
   useEffect(() => {
-    const getToken = async () => {
-      const token = await AsyncStorage.getItem(ZAMMAD_TOKEN_KEY);
-      setIsAuthenticated(!!token);
+    const testAuth = async () => {
+      try {
+        await getCurrentUserInfo();
+        setIsAuthenticated(true);
+      } catch (error) {
+        setIsAuthenticated(false);
+      }
     };
-    getToken();
+    testAuth();
   }, []);
 
   const login = async (username: string, password: string) => {
