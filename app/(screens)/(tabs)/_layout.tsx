@@ -1,9 +1,8 @@
-import { Stack, Tabs } from "expo-router";
-import { SettingsIcon } from "@/components/shared/Icons";
+import { Tabs } from "expo-router";
+import { GlobeIcon, SettingsIcon } from "@/components/shared/Icons";
 import { useThemeColor } from "@/hooks/useThemeColor";
 import { useTranslation } from "react-i18next";
 import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
 
 export default function TabsLayout() {
   const { t } = useTranslation();
@@ -14,14 +13,21 @@ export default function TabsLayout() {
         tabBarActiveTintColor: useThemeColor("tabIconSelected"),
         tabBarStyle: {
           backgroundColor: useThemeColor("background"),
-          paddingTop: 8,
+          paddingTop: 4,
         },
-        headerStyle: { backgroundColor: useThemeColor("background") },
         headerShadowVisible: false,
+        headerStyle: { backgroundColor: useThemeColor("background") },
         headerTitleStyle: { color: useThemeColor("text") },
         tabBarShowLabel: false,
       }}
     >
+      <Tabs.Screen
+        name="index"
+        options={{
+          headerTitle: "LimasAssist",
+          tabBarIcon: ({ color }) => <GlobeIcon size={30} color={color} />,
+        }}
+      />
       <Tabs.Screen
         name="settings"
         options={{

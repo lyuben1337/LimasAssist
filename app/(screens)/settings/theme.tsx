@@ -4,7 +4,6 @@ import { ThemedView } from "@/components/shared/ThemedView";
 import { Theme, ThemeContext } from "@/context/ThemeContext";
 import { useTranslation } from "react-i18next";
 import { Stack } from "expo-router";
-import { useThemeColor } from "@/hooks/useThemeColor";
 import { Options } from "@/components/settings/Options";
 
 export default function ThemeScreen() {
@@ -22,8 +21,6 @@ export default function ThemeScreen() {
       <Stack.Screen
         options={{
           title: t("settings.title.theme"),
-          headerTitleStyle: { color: useThemeColor("text") },
-          headerStyle: { backgroundColor: useThemeColor("background") },
           headerBackTitle: t("screens.settings"),
         }}
       />

@@ -40,7 +40,7 @@ export default function SettingsScreen() {
           iconColor={SettingsIconColor.theme}
           value={t(`settings.theme.${theme}`)}
           onPress={() => {
-            router.navigate("/(screens)/settings/theme");
+            router.navigate("/settings/theme");
           }}
         />
         <Divider style={styles.divider} />

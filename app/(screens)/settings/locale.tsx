@@ -21,8 +21,6 @@ export default function LocaleScreen() {
       <Stack.Screen
         options={{
           title: t("settings.title.language"),
-          headerTitleStyle: { color: useThemeColor("text") },
-          headerStyle: { backgroundColor: useThemeColor("background") },
           headerBackTitle: t("screens.settings"),
         }}
       />
