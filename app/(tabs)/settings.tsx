@@ -9,6 +9,7 @@ import { router } from "expo-router";
 import { Divider } from "@/components/shared/Divider";
 import { SettingsIconColor } from "@/constants/Colors";
 import { useAuth } from "@/hooks/useAuth";
+import Option from "@/components/settings/Option";
 
 export default function SettingsScreen() {
   const { t, i18n } = useTranslation();
@@ -29,7 +30,7 @@ export default function SettingsScreen() {
           iconColor={SettingsIconColor.language}
           value={t(`settings.locale.${i18n.language}`)}
           onPress={() => {
-            router.navigate("/settings/locale-settings");
+            router.navigate("/settings/locale");
           }}
         />
         <Divider style={styles.divider} />
@@ -39,7 +40,7 @@ export default function SettingsScreen() {
           iconColor={SettingsIconColor.theme}
           value={t(`settings.theme.${theme}`)}
           onPress={() => {
-            router.navigate("/settings/theme-settings");
+            router.navigate("/(screens)/settings/theme");
           }}
         />
         <Divider style={styles.divider} />
@@ -51,13 +52,9 @@ export default function SettingsScreen() {
             router.navigate("/settings/about");
           }}
         />
-        <Divider style={styles.divider} />
-        <Setting
-          title={t("settings.title.logout")}
-          icon={<InfoIcon />}
-          iconColor={SettingsIconColor.about}
-          onPress={handleLogout}
-        />
+      </ThemedView>
+      <ThemedView style={styles.settings}>
+        <Option title={t("settings.title.logout")} onPress={handleLogout} />
       </ThemedView>
     </ThemedView>
   );
@@ -66,6 +63,7 @@ export default function SettingsScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: "space-between",
     padding: 16,
     paddingTop: 8,
   },

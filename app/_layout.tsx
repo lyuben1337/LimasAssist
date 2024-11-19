@@ -1,10 +1,9 @@
 import { SplashScreen, Stack } from "expo-router";
 import { useFonts } from "expo-font";
-import React, { useEffect, useContext } from "react";
+import React, { useEffect } from "react";
 import ThemeProvider from "@/context/ThemeContext";
 import LocaleProvider from "@/context/LocaleContext";
-import { AuthProvider, AuthContext } from "@/context/AuthContext";
-import { useAuth } from "@/hooks/useAuth";
+import { AuthProvider } from "@/context/AuthContext";
 import PortalProvider from "@/context/PortalContext";
 
 SplashScreen.preventAutoHideAsync();

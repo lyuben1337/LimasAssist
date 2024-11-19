@@ -1,8 +1,7 @@
+import { Stack } from "expo-router";
+import { useThemeColor } from "@/hooks/useThemeColor";
 import { useTranslation } from "react-i18next";
-import { Slot } from "expo-router";
 
 export default function TabsLayout() {
-  const { t } = useTranslation();
-
-  return <Slot />;
+  return <Stack screenOptions={{ headerShown: false }} />;
 }

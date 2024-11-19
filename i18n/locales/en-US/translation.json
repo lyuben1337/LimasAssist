@@ -11,7 +11,8 @@
     "title": {
       "theme": "Theme",
       "language": "Language",
-      "about": "About this app"
+      "about": "About this app",
+      "logout": "Logout"
     },
     "theme": {
       "system": "System",
