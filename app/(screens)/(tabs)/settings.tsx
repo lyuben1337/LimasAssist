@@ -10,15 +10,19 @@ import { Divider } from "@/components/shared/Divider";
 import { SettingsIconColor } from "@/constants/Colors";
 import { useAuth } from "@/hooks/useAuth";
 import Option from "@/components/settings/Option";
+import { useLoading } from "@/hooks/useLoading";
 
 export default function SettingsScreen() {
   const { t, i18n } = useTranslation();
   const { theme } = useContext(ThemeContext);
   const { logout } = useAuth();
+  const { setIsLoading } = useLoading();
 
   const handleLogout = async () => {
+    setIsLoading(true);
     await logout();
-    router.navigate("/login");
+    setIsLoading(false);
+    router.navigate("/auth/login");
   };
 
   return (

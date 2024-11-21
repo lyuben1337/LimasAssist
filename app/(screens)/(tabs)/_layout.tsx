@@ -1,8 +1,7 @@
-import { Tabs } from "expo-router";
-import { GlobeIcon, SettingsIcon } from "@/components/shared/Icons";
+import { router, Tabs } from "expo-router";
+import { QrcodeIcon, SettingsIcon } from "@/components/shared/Icons";
 import { useThemeColor } from "@/hooks/useThemeColor";
 import { useTranslation } from "react-i18next";
-import React from "react";
 
 export default function TabsLayout() {
   const { t } = useTranslation();
@@ -25,7 +24,7 @@ export default function TabsLayout() {
         name="index"
         options={{
           headerTitle: "LimasAssist",
-          tabBarIcon: ({ color }) => <GlobeIcon size={30} color={color} />,
+          tabBarIcon: ({ color }) => <QrcodeIcon size={30} color={color} />,
         }}
       />
       <Tabs.Screen

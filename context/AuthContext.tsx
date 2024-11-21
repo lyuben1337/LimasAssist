@@ -1,6 +1,4 @@
 import React, { createContext, useEffect, useState } from "react";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { ZAMMAD_TOKEN_KEY } from "@/api/zammad/ZammadClient";
 import * as AuthAPI from "@/api/zammad/auth";
 import { getCurrentUserInfo } from "@/api/zammad/users";
 

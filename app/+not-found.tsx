@@ -20,7 +20,10 @@ export default function NotFoundScreen() {
       />
       <ThemedView variant="background" style={styles.container}>
         <ThemedText>{t("not-found.screen-not-exist")}</ThemedText>
-        <ThemedLink href={"/"} label={t("not-found.home-page")} />
+        <ThemedLink
+          href={"/(screens)/(tabs)"}
+          label={t("not-found.home-page")}
+        />
       </ThemedView>
     </>
   );

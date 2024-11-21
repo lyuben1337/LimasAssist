@@ -7,27 +7,24 @@ import { useTranslation } from "react-i18next";
 import { useAuth } from "@/hooks/useAuth";
 import { useState } from "react";
 import { router } from "expo-router";
+import { useLoading } from "@/hooks/useLoading";
 
-type LoginFormProps = {
-  setIsLoading: (isLoading: boolean) => void;
-};
-
-export default function LoginForm({ setIsLoading }: LoginFormProps) {
+export default function LoginForm() {
   const { t } = useTranslation();
   const { login } = useAuth();
+  const { setIsLoading } = useLoading();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const handleLogin = async () => {
     Keyboard.dismiss();
-    setIsLoading(true);
     try {
+      setIsLoading(true);
       await login(username, password);
-      router.navigate("/");
+      setIsLoading(false);
+      router.replace("/(screens)/(tabs)");
     } catch (error) {
       alert(t("errors.invalid-credentials"));
-    } finally {
-      setIsLoading(false);
     }
   };
 

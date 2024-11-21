@@ -25,7 +25,7 @@ export default function Setting({
         <View style={[styles.iconContainer, { backgroundColor: iconColor }]}>
           {React.cloneElement(icon, { color: Colors.light.background })}
         </View>
-        <ThemedText variant="semibold">{title}</ThemedText>
+        <ThemedText>{title}</ThemedText>
       </View>
       <View style={styles.valueContainer}>
         {value && <Text style={styles.value}>{value}</Text>}

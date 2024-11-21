@@ -1,5 +1,6 @@
 import axios, { InternalAxiosRequestConfig } from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useLoading } from "@/hooks/useLoading";
 
 const ZAMMAD_BASE_URL = "https://ticket.schulen-leipzig.de/api/v1";
 export const ZAMMAD_TOKEN_KEY = "zammad_access_token";
