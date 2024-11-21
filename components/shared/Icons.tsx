@@ -152,3 +152,29 @@ export function QrcodeIcon(props: SpecificIconProps) {
     </IconBase>
   );
 }
+
+export function LeftBound(props: SpecificIconProps) {
+  return (
+    <IconBase {...props} viewBox="0 0 70 300">
+      <Path d="M20 280V230H0V285C0 293.284 6.71573 300 15 300H70V280H20Z" />
+      <Path d="M20 20H70V0H15C6.71573 0 0 6.71576 0 15V70H20V20Z" />
+    </IconBase>
+  );
+}
+
+export function RightBound(props: SpecificIconProps) {
+  return (
+    <IconBase {...props} viewBox="0 0 70 300">
+      <Path d="M50 280H0V300H55C63.284 300 70 293.284 70 285V230H50V280Z" />
+      <Path d="M50 20H0V0H55C63.284 0 70 6.71576 70 15V70H50V20Z" />
+    </IconBase>
+  );
+}
+
+export function CrossIcon(props: SpecificIconProps) {
+  return (
+    <IconBase {...props} viewBox="0 0 384 512">
+      <Path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
+    </IconBase>
+  );
+}

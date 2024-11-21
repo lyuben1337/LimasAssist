@@ -24,6 +24,9 @@
       "de-DE": "Deutsch"
     }
   },
+  "home": {
+    "enter-manually": "Manuell eingeben"
+  },
   "errors": {
     "invalid-credentials": "Ungültiger Benutzername oder Passwort."
   },

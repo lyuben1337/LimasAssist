@@ -21,7 +21,6 @@ const styles = StyleSheet.create({
   default: {
     width: "100%",
     height: 48,
-    borderRadius: 8,
     fontSize: 16,
     lineHeight: 24,
     padding: 10,

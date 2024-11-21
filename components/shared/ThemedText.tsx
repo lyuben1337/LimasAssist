@@ -5,7 +5,7 @@ import { useThemeColor } from "@/hooks/useThemeColor";
 export type ThemedTextProps = TextProps & {
   lightColor?: string;
   darkColor?: string;
-  size?: "default" | "small";
+  size?: "default" | "small" | "medium";
   variant?: "default" | "semibold";
 };
 
@@ -35,6 +35,10 @@ const sizeStyles = StyleSheet.create({
   small: {
     fontSize: 12,
     lineHeight: 18,
+  },
+  medium: {
+    fontSize: 18,
+    lineHeight: 24,
   },
 });
 

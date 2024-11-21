@@ -16,18 +16,18 @@ export default function SettingsScreen() {
   const { t, i18n } = useTranslation();
   const { theme } = useContext(ThemeContext);
   const { logout } = useAuth();
-  const { setIsLoading } = useLoading();
+  const { setLoading } = useLoading();
 
   const handleLogout = async () => {
-    setIsLoading(true);
+    setLoading(true);
     await logout();
-    setIsLoading(false);
+    setLoading(false);
     router.navigate("/auth/login");
   };
 
   return (
     <ThemedView variant="background" style={styles.container}>
-      <ThemedView style={styles.settings}>
+      <ThemedView>
         <Setting
           title={t("settings.title.language")}
           icon={<GlobeIcon />}
@@ -57,7 +57,7 @@ export default function SettingsScreen() {
           }}
         />
       </ThemedView>
-      <ThemedView style={styles.settings}>
+      <ThemedView>
         <Option title={t("settings.title.logout")} onPress={handleLogout} />
       </ThemedView>
     </ThemedView>
@@ -70,9 +70,6 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     padding: 16,
     paddingTop: 8,
-  },
-  settings: {
-    borderRadius: 10,
   },
   divider: {
     marginHorizontal: 12,

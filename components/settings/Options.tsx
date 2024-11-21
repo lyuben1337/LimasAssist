@@ -17,7 +17,7 @@ export function Options<T extends React.Key>({
   onSelect,
 }: OptionsProps<T>) {
   return (
-    <ThemedView style={styles.optionsContainer}>
+    <ThemedView>
       {collection.map(({ key, title, subtitle }) => (
         <React.Fragment key={key}>
           <Option
@@ -36,9 +36,6 @@ export function Options<T extends React.Key>({
 }
 
 const styles = StyleSheet.create({
-  optionsContainer: {
-    borderRadius: 10,
-  },
   divider: {
     marginHorizontal: 12,
   },

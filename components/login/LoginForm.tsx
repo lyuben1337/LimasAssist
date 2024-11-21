@@ -12,16 +12,16 @@ import { useLoading } from "@/hooks/useLoading";
 export default function LoginForm() {
   const { t } = useTranslation();
   const { login } = useAuth();
-  const { setIsLoading } = useLoading();
+  const { setLoading } = useLoading();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const handleLogin = async () => {
     Keyboard.dismiss();
     try {
-      setIsLoading(true);
+      setLoading(true);
       await login(username, password);
-      setIsLoading(false);
+      setLoading(false);
       router.replace("/(screens)/(tabs)");
     } catch (error) {
       alert(t("errors.invalid-credentials"));
@@ -52,7 +52,6 @@ const styles = StyleSheet.create({
   form: {
     alignItems: "center",
     top: "20%",
-    borderRadius: 10,
     padding: 12,
     gap: 12,
     width: "100%",

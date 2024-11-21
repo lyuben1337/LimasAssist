@@ -24,6 +24,9 @@
       "de-DE": "German"
     }
   },
+  "home": {
+    "enter-manually": "Enter manually"
+  },
   "errors": {
     "invalid-credentials": "Invalid login or password."
   },
