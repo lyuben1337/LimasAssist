@@ -25,12 +25,17 @@
     }
   },
   "home": {
-    "enter-manually": "Enter manually"
+    "enter-manually": "Enter manually",
+    "permission-required": "We need your camera permission to scan inventory number.",
+    "grant-permission": "Grant permission",
+    "device-not-found": "Device not found"
   },
   "errors": {
     "invalid-credentials": "Invalid login or password."
   },
   "shared": {
-    "login": "Login"
+    "login": "Login",
+    "inventory-number": "Inventory number",
+    "search": "Search"
   }
 }

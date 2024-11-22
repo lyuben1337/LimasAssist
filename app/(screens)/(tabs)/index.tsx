@@ -1,4 +1,4 @@
-import { StyleSheet, View } from "react-native";
+import { Keyboard, StyleSheet, View } from "react-native";
 import { ThemedView } from "@/components/shared/ThemedView";
 import { useCameraPermissions } from "expo-camera";
 import { ThemedButton } from "@/components/shared/ThemedButton";
@@ -7,14 +7,33 @@ import { useTranslation } from "react-i18next";
 import BarcodeReader from "@/components/home/BarcodeReader";
 import { ThemedText } from "@/components/shared/ThemedText";
 import DeviceModal from "@/components/home/DeviceModal";
+import ManuallyEnterModal from "@/components/home/ManuallyEnterModal";
+import { Device } from "@/models/Device";
+import { getItem } from "@/api/limas/items";
+import { useLoading } from "@/hooks/useLoading";
 
 export default function Index() {
   const [permission, requestPermission] = useCameraPermissions();
   const { t } = useTranslation();
-  const [inventoryNumber, setInventoryNumber] = useState("zxc");
+  const [device, setDevice] = useState<Device | undefined>();
+  const [manualMode, setManualMode] = useState(false);
+  const { setLoading } = useLoading();
 
-  const onBarcodeScanned = (data: string) => {
-    setInventoryNumber(data);
+  const onSubmit = async (data: string) => {
+    Keyboard.dismiss();
+    try {
+      setLoading(true);
+      const device = await getItem(data);
+      setDevice(device);
+    } catch (error: any) {
+      if (error.response.status === 404) {
+        alert(t("home.device-not-found"));
+      } else {
+        alert(t("Network Error"));
+      }
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (!permission) {
@@ -26,25 +45,33 @@ export default function Index() {
   if (!permission.granted) {
     return (
       <ThemedView variant="background" style={styles.container}>
-        <ThemedText>
-          We need your camera permission to scan inventory number
-        </ThemedText>
-        <ThemedButton onPress={requestPermission} label="Grant Permission" />
+        <ThemedText>{t("home.permission-required")}</ThemedText>
+        <ThemedButton
+          onPress={requestPermission}
+          label={t("home.grant-permission")}
+        />
       </ThemedView>
     );
   }
 
   return (
     <ThemedView style={styles.container} variant="background">
-      {!inventoryNumber && (
-        <BarcodeReader onBarcodeScanned={onBarcodeScanned} />
+      {!device ? (
+        <BarcodeReader onBarcodeScanned={onSubmit} />
+      ) : (
+        <View style={{ flex: 8 }} />
       )}
       <View style={styles.tools}>
-        <ThemedButton label={t("home.enter-manually")} />
+        <ThemedButton
+          label={t("home.enter-manually")}
+          onPress={() => setManualMode(true)}
+        />
       </View>
-      <DeviceModal
-        inventoryNumber={inventoryNumber}
-        onClose={() => setInventoryNumber("")}
+      <DeviceModal device={device} onClose={() => setDevice(undefined)} />
+      <ManuallyEnterModal
+        onClose={() => setManualMode(false)}
+        onSubmit={onSubmit}
+        isVisible={manualMode}
       />
     </ThemedView>
   );
@@ -53,7 +80,7 @@ export default function Index() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
+    justifyContent: "center",
     paddingTop: 8,
     gap: 16,
     padding: 16,

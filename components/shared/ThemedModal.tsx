@@ -1,5 +1,10 @@
 import { PropsWithChildren } from "react";
-import { Modal, Pressable, StyleSheet } from "react-native";
+import {
+  KeyboardAvoidingView,
+  Modal,
+  Pressable,
+  StyleSheet,
+} from "react-native";
 import { ThemedView } from "@/components/shared/ThemedView";
 import { ThemedText } from "@/components/shared/ThemedText";
 import Portal from "@/components/shared/Portal";
@@ -21,9 +26,12 @@ export default function ThemedModal({
   variant = "full",
 }: ThemedModalProps) {
   return (
-    <Portal name="modal">
-      <Modal animationType="slide" transparent visible={isVisible}>
-        <ThemedView style={[styles[variant], styles.modalContent]}>
+    <Modal animationType="slide" transparent visible={isVisible}>
+      <KeyboardAvoidingView
+        behavior="position"
+        style={[styles[variant], styles.avoidingView]}
+      >
+        <ThemedView style={[styles.modalContent]}>
           <ThemedView style={styles.titleContainer}>
             <ThemedText variant="semibold" size="medium">
               {title}
@@ -34,8 +42,8 @@ export default function ThemedModal({
           </ThemedView>
           {children}
         </ThemedView>
-      </Modal>
-    </Portal>
+      </KeyboardAvoidingView>
+    </Modal>
   );
 }
 
@@ -46,18 +54,22 @@ const styles = StyleSheet.create({
   small: {
     height: "25%",
   },
-  modalContent: {
+  avoidingView: {
     width: "100%",
-    borderTopRightRadius: 18,
-    borderTopLeftRadius: 18,
     position: "absolute",
     bottom: 0,
   },
-  titleContainer: {
-    height: "10%",
-    borderTopRightRadius: 10,
-    borderTopLeftRadius: 10,
+  modalContent: {
+    width: "100%",
+    height: "100%",
+    justifyContent: "flex-start",
+    gap: 14,
     paddingHorizontal: 20,
+    borderTopLeftRadius: 12,
+    borderTopRightRadius: 12,
+    paddingVertical: 10,
+  },
+  titleContainer: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",

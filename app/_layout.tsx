@@ -56,16 +56,16 @@ function AppLayout() {
 
 export default function RootLayout() {
   return (
-    <LocaleProvider>
-      <ThemeProvider>
-        <AuthProvider>
-          <PortalProvider>
+    <PortalProvider>
+      <LocaleProvider>
+        <ThemeProvider>
+          <AuthProvider>
             <LoadingProvider>
               <AppLayout />
             </LoadingProvider>
-          </PortalProvider>
-        </AuthProvider>
-      </ThemeProvider>
-    </LocaleProvider>
+          </AuthProvider>
+        </ThemeProvider>
+      </LocaleProvider>
+    </PortalProvider>
   );
 }

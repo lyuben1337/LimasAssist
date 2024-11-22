@@ -25,12 +25,17 @@
     }
   },
   "home": {
-    "enter-manually": "Manuell eingeben"
+    "enter-manually": "Manuell eingeben",
+    "permission-required": "Wir benötigen Ihre Kameraberechtigung, um die Inventarnummer zu scannen.",
+    "grant-permission": "Berechtigung erteilen",
+    "device-not-found": "Gerät nicht gefunden"
   },
   "errors": {
     "invalid-credentials": "Ungültiger Benutzername oder Passwort."
   },
   "shared": {
-    "login": "Einloggen"
+    "login": "Einloggen",
+    "inventory-number": "Inventarnummer",
+    "search": "Suchen"
   }
 }
