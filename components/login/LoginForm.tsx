@@ -51,10 +51,10 @@ export default function LoginForm() {
 const styles = StyleSheet.create({
   form: {
     alignItems: "center",
-    top: "20%",
     padding: 12,
     gap: 12,
     width: "100%",
+    maxWidth: 400,
   },
   iconContainer: {
     marginBottom: 12,

@@ -5,8 +5,8 @@ import { useThemeColor } from "@/hooks/useThemeColor";
 export type ThemedTextProps = TextProps & {
   lightColor?: string;
   darkColor?: string;
-  size?: "default" | "small" | "medium";
-  variant?: "default" | "semibold";
+  size?: "default" | "small" | "medium" | "large";
+  variant?: "default" | "semibold" | "bold";
 };
 
 export function ThemedText({
@@ -21,7 +21,13 @@ export function ThemedText({
 
   return (
     <Text
-      style={[{ color }, sizeStyles[size], variantStyles[variant], style]}
+      style={[
+        { color },
+        sizeStyles[size],
+        variantStyles[variant],
+        style,
+        { textAlign: "auto" },
+      ]}
       {...rest}
     />
   );
@@ -40,6 +46,10 @@ const sizeStyles = StyleSheet.create({
     fontSize: 18,
     lineHeight: 24,
   },
+  large: {
+    fontSize: 24,
+    lineHeight: 24,
+  },
 });
 
 const variantStyles = StyleSheet.create({
@@ -48,5 +58,8 @@ const variantStyles = StyleSheet.create({
   },
   semibold: {
     fontWeight: "600",
+  },
+  bold: {
+    fontWeight: "700",
   },
 });

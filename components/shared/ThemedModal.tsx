@@ -7,9 +7,9 @@ import {
 } from "react-native";
 import { ThemedView } from "@/components/shared/ThemedView";
 import { ThemedText } from "@/components/shared/ThemedText";
-import Portal from "@/components/shared/Portal";
 import { CrossIcon } from "@/components/shared/Icons";
 import { useThemeColor } from "@/hooks/useThemeColor";
+import * as ScreenOrientation from "expo-screen-orientation";
 
 export type ThemedModalProps = PropsWithChildren<{
   isVisible: boolean;
@@ -26,7 +26,12 @@ export default function ThemedModal({
   variant = "full",
 }: ThemedModalProps) {
   return (
-    <Modal animationType="slide" transparent visible={isVisible}>
+    <Modal
+      animationType="slide"
+      supportedOrientations={["landscape", "portrait"]}
+      transparent
+      visible={isVisible}
+    >
       <KeyboardAvoidingView
         behavior="position"
         style={[styles[variant], styles.avoidingView]}
@@ -36,7 +41,7 @@ export default function ThemedModal({
             <ThemedText variant="semibold" size="medium">
               {title}
             </ThemedText>
-            <Pressable onPress={onClose}>
+            <Pressable style={styles.closeButton} onPress={onClose}>
               <CrossIcon size={16} color={useThemeColor("text")} />
             </Pressable>
           </ThemedView>
@@ -73,5 +78,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
+  },
+  closeButton: {
+    width: 40,
+    alignItems: "flex-end",
   },
 });

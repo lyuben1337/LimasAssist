@@ -10,10 +10,8 @@ export default function LoginScreen() {
     <>
       <Stack.Screen
         options={{
-          headerBackVisible: false,
-          headerStyle: { backgroundColor: useThemeColor("background") },
-          headerTitle: "",
           gestureEnabled: false,
+          headerShown: false,
         }}
       />
       <ThemedView variant="background" style={styles.container}>
@@ -27,5 +25,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingHorizontal: 24,
+    justifyContent: "center",
+    alignItems: "center",
   },
 });

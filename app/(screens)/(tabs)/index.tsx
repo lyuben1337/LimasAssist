@@ -16,23 +16,22 @@ export default function Index() {
   const [permission, requestPermission] = useCameraPermissions();
   const { t } = useTranslation();
   const [device, setDevice] = useState<Device | undefined>();
+  const [deviceModalVisible, setDeviceModalVisible] = useState(false);
   const [manualMode, setManualMode] = useState(false);
-  const { setLoading } = useLoading();
+  const { isLoading, setLoading } = useLoading();
 
   const onSubmit = async (data: string) => {
     Keyboard.dismiss();
+    setLoading(true);
     try {
-      setLoading(true);
       const device = await getItem(data);
       setDevice(device);
     } catch (error: any) {
-      if (error.response.status === 404) {
-        alert(t("home.device-not-found"));
-      } else {
-        alert(t("Network Error"));
-      }
+      setDevice(undefined);
+      error.response.status !== 404 && alert(t("Network Error"));
     } finally {
       setLoading(false);
+      setDeviceModalVisible(true);
     }
   };
 
@@ -56,7 +55,7 @@ export default function Index() {
 
   return (
     <ThemedView style={styles.container} variant="background">
-      {!device ? (
+      {!isLoading && !deviceModalVisible ? (
         <BarcodeReader onBarcodeScanned={onSubmit} />
       ) : (
         <View style={{ flex: 8 }} />
@@ -67,7 +66,11 @@ export default function Index() {
           onPress={() => setManualMode(true)}
         />
       </View>
-      <DeviceModal device={device} onClose={() => setDevice(undefined)} />
+      <DeviceModal
+        device={device}
+        isVisible={deviceModalVisible}
+        onClose={() => setDeviceModalVisible(false)}
+      />
       <ManuallyEnterModal
         onClose={() => setManualMode(false)}
         onSubmit={onSubmit}

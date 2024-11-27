@@ -1,8 +1,10 @@
 import { StyleSheet, View } from "react-native";
 import { CameraView } from "expo-camera";
-import React from "react";
+import { useEffect, useState } from "react";
 import { useThemeColor } from "@/hooks/useThemeColor";
 import { LeftBound, RightBound } from "@/components/shared/Icons";
+import { useIsFocused } from "@react-navigation/core";
+import * as ScreenOrientation from "expo-screen-orientation";
 
 type BarcodeReaderProps = {
   onBarcodeScanned: (data: string) => void;
@@ -12,11 +14,35 @@ export default function BarcodeReader({
   onBarcodeScanned,
 }: BarcodeReaderProps) {
   const boundsColor = useThemeColor("view");
+  const [scanned, setScanned] = useState(false);
+  const isFocused = useIsFocused();
+
+  if (!isFocused) return null;
+
+  useEffect(() => {
+    if (isFocused) {
+      ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT);
+    }
+
+    return () => {
+      ScreenOrientation.unlockAsync();
+    };
+  }, [isFocused]);
+
+  const handleBarCodeScanned = ({ data }: { data: string }) => {
+    if (!scanned) {
+      setScanned(true);
+      setTimeout(() => {
+        onBarcodeScanned(data);
+        setScanned(false);
+      }, 500);
+    }
+  };
 
   return (
     <CameraView
-      barcodeScannerSettings={{ barcodeTypes: ["ean13"] }}
-      onBarcodeScanned={({ data }) => onBarcodeScanned(data)}
+      barcodeScannerSettings={{ barcodeTypes: ["qr"] }}
+      onBarcodeScanned={handleBarCodeScanned}
       style={styles.barcodeReader}
       facing="back"
     >
