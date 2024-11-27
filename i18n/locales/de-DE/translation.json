@@ -28,7 +28,11 @@
     "enter-manually": "Manuell eingeben",
     "permission-required": "Wir benötigen Ihre Kameraberechtigung, um die Inventarnummer zu scannen.",
     "grant-permission": "Berechtigung erteilen",
-    "device-not-found": "Gerät nicht gefunden"
+    "device-not-found": "Gerät nicht gefunden",
+    "update-location": "Ort aktualisieren",
+    "report": "Problem melden",
+    "actions": "Aktionen",
+    "device-overview": "Geräteübersicht"
   },
   "errors": {
     "invalid-credentials": "Ungültiger Benutzername oder Passwort."
@@ -36,6 +40,15 @@
   "shared": {
     "login": "Einloggen",
     "inventory-number": "Inventarnummer",
-    "search": "Suchen"
+    "search": "Suchen",
+    "device-attributes": {
+      "product-type": "Produkttyp",
+      "manufacturer": "Hersteller",
+      "name": "Name",
+      "serial-number": "Seriennummer",
+      "client-name": "Clientname",
+      "room": "Raum",
+      "location": "Standort"
+    }
   }
 }

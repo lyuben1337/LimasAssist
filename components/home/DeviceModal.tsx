@@ -8,6 +8,7 @@ import { ScrollView, StyleSheet, View } from "react-native";
 import DeviceOverview from "@/components/home/DeviceOverview";
 import { ThemedView } from "@/components/shared/ThemedView";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import DeviceActions from "@/components/home/DeviceActions";
 
 type DeviceModalProps = {
   device?: Device;
@@ -41,18 +42,7 @@ export default function DeviceModal({
       ) : (
         <ScrollView style={styles.container}>
           <DeviceOverview device={device} />
-          <ThemedView variant="background" style={styles.group}>
-            <View style={styles.header}>
-              <MaterialCommunityIcons name="tools" size={28} color="#4CAF50" />
-              <ThemedText variant="semibold" size="medium" style={styles.title}>
-                Actions
-              </ThemedText>
-            </View>
-            <View style={{ gap: 8 }}>
-              <ThemedButton label="Update Information" />
-              <ThemedButton label="Report" />
-            </View>
-          </ThemedView>
+          <DeviceActions />
         </ScrollView>
       )}
     </ThemedModal>
@@ -68,22 +58,5 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingBottom: 10,
-  },
-  group: {
-    marginTop: 24,
-    padding: 16,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 2,
-  },
-  header: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginBottom: 16,
-  },
-  title: {
-    marginLeft: 8,
   },
 });

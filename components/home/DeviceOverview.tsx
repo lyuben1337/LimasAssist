@@ -5,65 +5,76 @@ import { MaterialIcons } from "@expo/vector-icons"; // Icons from @expo/vector-i
 import { Device } from "@/models/Device";
 import { ThemedView } from "@/components/shared/ThemedView";
 import { PrimaryColor } from "@/constants/Colors";
-import { ManufacturerIcon } from "@/components/shared/Icons";
+import { ManufacturerIcon, TagIcon } from "@/components/shared/Icons";
+import { useTranslation } from "react-i18next";
 
 type DeviceOverviewProps = {
   device: Device;
 };
 
 export default function DeviceOverview({ device }: DeviceOverviewProps) {
+  const { t } = useTranslation();
+
   return (
     <ThemedView variant="background" style={styles.container}>
       <View style={styles.header}>
         <MaterialIcons name="devices" size={28} color="#4CAF50" />
-        <ThemedText variant="semibold" size="medium" style={styles.title}>
-          Device Overview
+        <ThemedText
+          numberOfLines={1}
+          variant="semibold"
+          size="medium"
+          style={styles.title}
+        >
+          {t("home.device-overview")}
         </ThemedText>
       </View>
       <View>
         <View style={styles.detailRow}>
           <MaterialIcons name="category" size={20} color={PrimaryColor} />
-          <ThemedText style={styles.detailText}>
-            Product Type: {device.product.product_type}
+          <ThemedText numberOfLines={1} style={styles.detailText}>
+            {t("shared.device-attributes.product-type")}:{" "}
+            {device.product.product_type}
           </ThemedText>
         </View>
         <View style={styles.detailRow}>
           <ManufacturerIcon size={20} color={PrimaryColor} />
-          <ThemedText style={styles.detailText}>
-            Manufacturer: {device.product.manufacturer}
+          <ThemedText numberOfLines={1} style={styles.detailText}>
+            {t("shared.device-attributes.product-type")}:{" "}
+            {device.product.manufacturer}
           </ThemedText>
         </View>
         <View style={styles.detailRow}>
           <MaterialIcons name="label" size={20} color={PrimaryColor} />
-          <ThemedText style={styles.detailText}>
-            Name: {device.product.name}
+          <ThemedText numberOfLines={1} style={styles.detailText}>
+            {t("shared.device-attributes.name")}: {device.product.name}
           </ThemedText>
         </View>
         <View style={styles.detailRow}>
-          <MaterialIcons name="qr-code" size={20} color={PrimaryColor} />
-          <ThemedText style={styles.detailText}>
-            Serial Number: {device.serial_number}
+          <TagIcon size={20} color={PrimaryColor} />
+          <ThemedText numberOfLines={1} style={styles.detailText}>
+            {t("shared.device-attributes.serial-number")}:{" "}
+            {device.serial_number}
           </ThemedText>
         </View>
         {device.client_name && (
           <View style={styles.detailRow}>
             <MaterialIcons name="person" size={20} color={PrimaryColor} />
-            <ThemedText style={styles.detailText}>
-              Client Name: {device.client_name}
+            <ThemedText numberOfLines={1} style={styles.detailText}>
+              {t("shared.device-attributes.client-name")}: {device.client_name}
             </ThemedText>
           </View>
         )}
         <View style={styles.detailRow}>
           <MaterialIcons name="meeting-room" size={20} color={PrimaryColor} />
-          <ThemedText style={styles.detailText}>
-            Room: {device.location.room_type} {device.location.room_number}
+          <ThemedText numberOfLines={1} style={styles.detailText}>
+            {t("shared.device-attributes.room")}: {device.location.room_type}{" "}
+            {device.location.room_number}
           </ThemedText>
         </View>
-
         <View style={styles.detailRow}>
           <MaterialIcons name="apartment" size={20} color={PrimaryColor} />
-          <ThemedText style={styles.detailText}>
-            Building: {device.location.building}
+          <ThemedText numberOfLines={1} style={styles.detailText}>
+            {t("shared.device-attributes.location")}: {device.location.building}
           </ThemedText>
         </View>
       </View>
@@ -94,6 +105,7 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   detailText: {
+    flex: 1,
     marginLeft: 8,
   },
 });

@@ -17,8 +17,6 @@ export default function BarcodeReader({
   const [scanned, setScanned] = useState(false);
   const isFocused = useIsFocused();
 
-  if (!isFocused) return null;
-
   useEffect(() => {
     if (isFocused) {
       ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT);
@@ -28,6 +26,8 @@ export default function BarcodeReader({
       ScreenOrientation.unlockAsync();
     };
   }, [isFocused]);
+
+  if (!isFocused) return null;
 
   const handleBarCodeScanned = ({ data }: { data: string }) => {
     if (!scanned) {
