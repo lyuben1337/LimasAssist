@@ -4,8 +4,17 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { ThemedText } from "@/components/shared/ThemedText";
 import { ThemedButton } from "@/components/shared/ThemedButton";
 import { useTranslation } from "react-i18next";
+import { router } from "expo-router";
 
-export default function DeviceActions() {
+type DeviceActionsParams = {
+  deviceId: string;
+  onCloseModal: () => void;
+};
+
+export default function DeviceActions({
+  deviceId,
+  onCloseModal,
+}: DeviceActionsParams) {
   const { t } = useTranslation();
 
   return (
@@ -17,8 +26,20 @@ export default function DeviceActions() {
         </ThemedText>
       </View>
       <View style={{ gap: 8 }}>
-        <ThemedButton label={t("home.update-location")} />
-        <ThemedButton label={t("home.report")} />
+        <ThemedButton
+          label={t("devices.actions.update-location")}
+          onPress={() => {
+            router.navigate(`/devices/${deviceId}/update-location`);
+            onCloseModal();
+          }}
+        />
+        <ThemedButton
+          label={t("devices.actions.report")}
+          onPress={() => {
+            router.navigate(`/devices/${deviceId}/report`);
+            onCloseModal();
+          }}
+        />
       </View>
     </ThemedView>
   );
@@ -37,7 +58,7 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: "row",
     alignItems: "center",
-    marginBottom: 16,
+    marginBottom: 12,
   },
   title: {
     marginLeft: 8,

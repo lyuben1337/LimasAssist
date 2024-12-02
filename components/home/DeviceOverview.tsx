@@ -39,7 +39,7 @@ export default function DeviceOverview({ device }: DeviceOverviewProps) {
         <View style={styles.detailRow}>
           <ManufacturerIcon size={20} color={PrimaryColor} />
           <ThemedText numberOfLines={1} style={styles.detailText}>
-            {t("shared.device-attributes.product-type")}:{" "}
+            {t("shared.device-attributes.manufacturer")}:{" "}
             {device.product.manufacturer}
           </ThemedText>
         </View>
@@ -64,17 +64,25 @@ export default function DeviceOverview({ device }: DeviceOverviewProps) {
             </ThemedText>
           </View>
         )}
+        {device.school && (
+          <View style={styles.detailRow}>
+            <MaterialIcons name="school" size={20} color={PrimaryColor} />
+            <ThemedText numberOfLines={1} style={styles.detailText}>
+              {t("shared.device-attributes.school")}: {device.school}
+            </ThemedText>
+          </View>
+        )}
+        <View style={styles.detailRow}>
+          <MaterialIcons name="apartment" size={20} color={PrimaryColor} />
+          <ThemedText numberOfLines={1} style={styles.detailText}>
+            {t("shared.device-attributes.location")}: {device.location.building}
+          </ThemedText>
+        </View>
         <View style={styles.detailRow}>
           <MaterialIcons name="meeting-room" size={20} color={PrimaryColor} />
           <ThemedText numberOfLines={1} style={styles.detailText}>
             {t("shared.device-attributes.room")}: {device.location.room_type}{" "}
             {device.location.room_number}
-          </ThemedText>
-        </View>
-        <View style={styles.detailRow}>
-          <MaterialIcons name="apartment" size={20} color={PrimaryColor} />
-          <ThemedText numberOfLines={1} style={styles.detailText}>
-            {t("shared.device-attributes.location")}: {device.location.building}
           </ThemedText>
         </View>
       </View>
@@ -94,7 +102,7 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: "row",
     alignItems: "center",
-    marginBottom: 16,
+    marginBottom: 12,
   },
   title: {
     marginLeft: 8,
@@ -102,7 +110,7 @@ const styles = StyleSheet.create({
   detailRow: {
     flexDirection: "row",
     alignItems: "center",
-    marginBottom: 8,
+    marginBottom: 6,
   },
   detailText: {
     flex: 1,

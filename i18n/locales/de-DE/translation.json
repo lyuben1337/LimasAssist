@@ -29,10 +29,26 @@
     "permission-required": "Wir benötigen Ihre Kameraberechtigung, um die Inventarnummer zu scannen.",
     "grant-permission": "Berechtigung erteilen",
     "device-not-found": "Gerät nicht gefunden",
-    "update-location": "Ort aktualisieren",
-    "report": "Problem melden",
     "actions": "Aktionen",
     "device-overview": "Geräteübersicht"
+  },
+  "devices": {
+    "actions": {
+      "report": "Problem melden",
+      "update-location": "Ort aktualisieren"
+    },
+    "report": {
+      "title": "Titel",
+      "contact": "Ansprechpartner:in",
+      "use-user-data": "Zammad nutzen",
+      "message": "Nachricht",
+      "message-placeholder": "Problembeschreibung eingeben...",
+      "date": "Aufgetreten am",
+      "name": "Vorname",
+      "surname": "Nachname",
+      "email": "Email",
+      "phone": "Telefonummer"
+    }
   },
   "errors": {
     "invalid-credentials": "Ungültiger Benutzername oder Passwort."
@@ -48,7 +64,8 @@
       "serial-number": "Seriennummer",
       "client-name": "Clientname",
       "room": "Raum",
-      "location": "Standort"
+      "location": "Standort",
+      "school": "Schule"
     }
   }
 }

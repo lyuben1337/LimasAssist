@@ -21,6 +21,8 @@ export default function Index() {
   const { isLoading, setLoading } = useLoading();
 
   const onSubmit = async (data: string) => {
+    if (isLoading || deviceModalVisible) return;
+
     Keyboard.dismiss();
     setLoading(true);
     try {
@@ -54,18 +56,16 @@ export default function Index() {
   }
 
   return (
-    <ThemedView style={styles.container} variant="background">
-      {!isLoading && !deviceModalVisible ? (
+    <>
+      <ThemedView style={styles.container} variant="background">
         <BarcodeReader onBarcodeScanned={onSubmit} />
-      ) : (
-        <View style={{ flex: 8 }} />
-      )}
-      <View style={styles.tools}>
-        <ThemedButton
-          label={t("home.enter-manually")}
-          onPress={() => setManualMode(true)}
-        />
-      </View>
+        <View style={styles.tools}>
+          <ThemedButton
+            label={t("home.enter-manually")}
+            onPress={() => setManualMode(true)}
+          />
+        </View>
+      </ThemedView>
       <DeviceModal
         device={device}
         isVisible={deviceModalVisible}
@@ -76,7 +76,7 @@ export default function Index() {
         onSubmit={onSubmit}
         isVisible={manualMode}
       />
-    </ThemedView>
+    </>
   );
 }
 
@@ -89,7 +89,6 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   tools: {
-    flex: 1,
     width: "100%",
     justifyContent: "center",
   },

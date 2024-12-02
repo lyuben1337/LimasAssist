@@ -29,10 +29,14 @@
     "permission-required": "We need your camera permission to scan inventory number.",
     "grant-permission": "Grant permission",
     "device-not-found": "Device not found",
-    "update-Location": "Update Location",
-    "report": "Report",
     "actions": "Actions",
     "device-overview": "Device Overview"
+  },
+  "devices": {
+    "actions": {
+      "report": "Report",
+      "update-location": "Update Location"
+    }
   },
   "errors": {
     "invalid-credentials": "Invalid login or password."
@@ -48,7 +52,8 @@
       "serial-number": "Serial Number",
       "client-name": "Client Name",
       "room": "Room",
-      "location": "Location"
+      "location": "Location",
+      "school": "School"
     }
   }
 }

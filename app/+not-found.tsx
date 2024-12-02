@@ -24,6 +24,7 @@ export default function NotFoundScreen() {
           href={"/(screens)/(tabs)"}
           label={t("not-found.home-page")}
         />
+        <ThemedLink href={"/_sitemap"} label={"Sitemap"} />
       </ThemedView>
     </>
   );
