@@ -4,6 +4,8 @@ import { PrimaryColor } from "@/constants/Colors";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { ThemedView } from "@/components/shared/ThemedView";
+import { formatDate } from "@/utils/format-date";
 
 type DatePickerProps = {
   setDate: (date: Date) => void;
@@ -21,19 +23,13 @@ export default function DatePicker({ setDate, date }: DatePickerProps) {
     }
   };
 
-  const formattedDate = new Intl.DateTimeFormat("en-GB", {
-    day: "numeric",
-    month: "short",
-    year: "numeric",
-  }).format(date);
-
   return (
-    <>
+    <ThemedView style={styles.group}>
       <View style={styles.dateGroupHeader}>
         <ThemedText>{t("devices.report.date")}</ThemedText>
         <Pressable onPress={() => setShowDatePicker(!showDatePicker)}>
           <ThemedText lightColor={PrimaryColor} darkColor={PrimaryColor}>
-            {formattedDate}
+            {formatDate(date, "short")}
           </ThemedText>
         </Pressable>
       </View>
@@ -45,7 +41,7 @@ export default function DatePicker({ setDate, date }: DatePickerProps) {
           onChange={handleDateChange}
         />
       )}
-    </>
+    </ThemedView>
   );
 }
 
@@ -54,5 +50,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
+  },
+  group: {
+    marginBottom: 12,
+    padding: 10,
+    gap: 8,
   },
 });

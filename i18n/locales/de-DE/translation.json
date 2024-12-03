@@ -47,7 +47,10 @@
       "name": "Vorname",
       "surname": "Nachname",
       "email": "Email",
-      "phone": "Telefonummer"
+      "phone": "Telefonummer",
+      "send": "Melden",
+      "summary": "Zusammenfassung",
+      "submit": "Einreichen"
     }
   },
   "errors": {
@@ -58,6 +61,7 @@
     "inventory-number": "Inventarnummer",
     "search": "Suchen",
     "device-attributes": {
+      "purchase-date": "Kaufdatum",
       "product-type": "Produkttyp",
       "manufacturer": "Hersteller",
       "name": "Name",

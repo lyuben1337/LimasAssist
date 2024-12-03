@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet } from "react-native";
 import { ThemedView } from "@/components/shared/ThemedView";
-import { ThemedText } from "@/components/shared/ThemedText";
 import { useLocalSearchParams } from "expo-router/build/hooks";
-import { router, Stack } from "expo-router";
+import { Stack } from "expo-router";
 import { useTranslation } from "react-i18next";
-import ThemedInput from "@/components/shared/ThemedInput";
 import { ThemedButton } from "@/components/shared/ThemedButton";
 import DatePicker from "@/components/devices/DatePicker";
-import { Checkbox } from "expo-checkbox";
-import { PrimaryColor } from "@/constants/Colors";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { getCurrentUserInfo } from "@/api/zammad/users";
 import { useLoading } from "@/hooks/useLoading";
 import { Contact } from "@/models/Contact";
 import { createDeviceReportTicket } from "@/api/zammad/tickets";
+import ContactForm from "@/components/devices/ContactForm";
+import ReportMessageForm from "@/components/devices/ReportMessageForm";
+import SubmitReportModal from "@/components/devices/SubmitReportModal";
+import { Ticket } from "@/models/Ticket";
 
 const EMPTY_CONTACT = {
   firstname: "",
@@ -33,6 +33,7 @@ export default function ReportScreen() {
   const [date, setDate] = useState(new Date());
   const [isUserData, setIsUserData] = useState(true);
   const [contact, setContact] = useState<Contact>(EMPTY_CONTACT);
+  const [ticket, setTicket] = useState<Ticket | undefined>(undefined);
 
   const handleToggleIsUserData = async (value: boolean) => {
     if (value) {
@@ -50,7 +51,7 @@ export default function ReportScreen() {
     handleToggleIsUserData(true);
   }, []);
 
-  const handleInputChange = (field: keyof typeof contact, value: string) => {
+  const handleInputChange = (field: keyof Contact, value: string) => {
     setContact({ ...contact, [field]: value });
   };
 
@@ -64,7 +65,7 @@ export default function ReportScreen() {
         message,
         date,
       );
-      router.navigate("/(screens)/(tabs)");
+      setTicket(ticket);
     } catch (error: any) {
       alert("Zammad is not available.");
     } finally {
@@ -85,67 +86,28 @@ export default function ReportScreen() {
           contentContainerStyle={{ flexGrow: 1 }}
           keyboardShouldPersistTaps="handled"
         >
-          <ThemedView style={styles.group}>
-            <ThemedText variant="semibold">
-              {t("devices.report.message")}
-            </ThemedText>
-            <ThemedInput
-              placeholder={t("devices.report.title")}
-              value={title}
-              onChangeText={setTitle}
-            />
-            <ThemedInput
-              placeholder={t("devices.report.message-placeholder")}
-              value={message}
-              multiline
-              onChangeText={setMessage}
-            />
-          </ThemedView>
-
-          <ThemedView style={styles.group}>
-            <DatePicker setDate={setDate} date={date} />
-          </ThemedView>
-
-          <ThemedView style={styles.group}>
-            <ThemedView style={styles.contactHeader}>
-              <ThemedText>{t("devices.report.contact")}</ThemedText>
-              <View style={styles.checkboxContainer}>
-                <ThemedText size="small">
-                  {t("devices.report.use-user-data")}
-                </ThemedText>
-                <Checkbox
-                  color={PrimaryColor}
-                  value={isUserData}
-                  onValueChange={handleToggleIsUserData}
-                />
-              </View>
-            </ThemedView>
-            <ThemedInput
-              placeholder={t("devices.report.name")}
-              value={contact.firstname}
-              onChangeText={(value) => handleInputChange("firstname", value)}
-            />
-            <ThemedInput
-              placeholder={t("devices.report.surname")}
-              value={contact.lastname}
-              onChangeText={(value) => handleInputChange("lastname", value)}
-            />
-            <ThemedInput
-              placeholder={t("devices.report.email")}
-              keyboardType="email-address"
-              value={contact.email}
-              onChangeText={(value) => handleInputChange("email", value)}
-            />
-            <ThemedInput
-              placeholder={t("devices.report.phone")}
-              keyboardType="phone-pad"
-              value={contact.phone}
-              onChangeText={(value) => handleInputChange("phone", value)}
-            />
-          </ThemedView>
+          <ReportMessageForm
+            title={title}
+            setTitle={setTitle}
+            message={message}
+            setMessage={setMessage}
+          />
+          <DatePicker setDate={setDate} date={date} />
+          <ContactForm
+            isUserData={isUserData}
+            handleToggleIsUserData={handleToggleIsUserData}
+            contact={contact}
+            handleInputChange={handleInputChange}
+          />
         </KeyboardAwareScrollView>
         <ThemedButton label={t("devices.report.send")} onPress={handleSubmit} />
       </ThemedView>
+      {ticket && (
+        <SubmitReportModal
+          onClose={() => setTicket(undefined)}
+          ticket={ticket}
+        />
+      )}
     </>
   );
 }
@@ -155,21 +117,5 @@ const styles = StyleSheet.create({
     padding: 16,
     justifyContent: "space-between",
     flex: 1,
-  },
-  checkboxContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 8,
-  },
-  group: {
-    marginBottom: 12,
-    padding: 10,
-    gap: 8,
-  },
-  contactHeader: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginBottom: 4,
   },
 });

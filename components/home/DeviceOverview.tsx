@@ -7,6 +7,7 @@ import { ThemedView } from "@/components/shared/ThemedView";
 import { PrimaryColor } from "@/constants/Colors";
 import { ManufacturerIcon, TagIcon } from "@/components/shared/Icons";
 import { useTranslation } from "react-i18next";
+import { formatDate } from "@/utils/format-date";
 
 type DeviceOverviewProps = {
   device: Device;
@@ -83,6 +84,13 @@ export default function DeviceOverview({ device }: DeviceOverviewProps) {
           <ThemedText numberOfLines={1} style={styles.detailText}>
             {t("shared.device-attributes.room")}: {device.location.room_type}{" "}
             {device.location.room_number}
+          </ThemedText>
+        </View>
+        <View style={styles.detailRow}>
+          <MaterialIcons name="date-range" size={20} color={PrimaryColor} />
+          <ThemedText numberOfLines={1} style={styles.detailText}>
+            {t("shared.device-attributes.purchase-date")}:{" "}
+            {formatDate(new Date(device.purchase_date))}
           </ThemedText>
         </View>
       </View>

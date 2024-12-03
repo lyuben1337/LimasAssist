@@ -36,6 +36,21 @@
     "actions": {
       "report": "Report",
       "update-location": "Update Location"
+    },
+    "report": {
+      "title": "Title",
+      "contact": "Contact",
+      "use-user-data": "Use Zammad",
+      "message": "Message",
+      "message-placeholder": "Describe your issue...",
+      "date": "Occurred on",
+      "name": "First Name",
+      "surname": "Last Name",
+      "email": "Email",
+      "phone": "Phone Number",
+      "send": "Send",
+      "summary": "Summary",
+      "submit": "Submit"
     }
   },
   "errors": {
@@ -46,6 +61,7 @@
     "inventory-number": "Inventory number",
     "search": "Search",
     "device-attributes": {
+      "purchase-date": "Purchase date",
       "product-type": "Product Type",
       "manufacturer": "Manufacturer",
       "name": "Name",
