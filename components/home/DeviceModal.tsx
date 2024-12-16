@@ -33,7 +33,7 @@ export default function DeviceModal({
             size="large"
             style={{ opacity: 0.5, paddingBottom: 40 }}
           >
-            {t("home.devices-not-found")}
+            {t("home.device-not-found")}
           </ThemedText>
         </View>
       ) : (

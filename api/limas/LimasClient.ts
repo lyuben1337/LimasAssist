@@ -2,7 +2,7 @@ import axios, { InternalAxiosRequestConfig } from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ZAMMAD_TOKEN_KEY } from "@/api/zammad/ZammadClient";
 
-const LIMAS_BASE_URL = "http://10.221.110.101:3000/api/v1";
+const LIMAS_BASE_URL = "https://limas.schulen-leipzig.de/api/v1";
 
 export const LimasClient = axios.create({
   baseURL: LIMAS_BASE_URL,

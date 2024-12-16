@@ -76,14 +76,14 @@ export default function DeviceOverview({ device }: DeviceOverviewProps) {
         <View style={styles.detailRow}>
           <MaterialIcons name="apartment" size={20} color={PrimaryColor} />
           <ThemedText numberOfLines={1} style={styles.detailText}>
-            {t("shared.device-attributes.location")}: {device.location.building}
+            {t("shared.device-attributes.location")}:{" "}
+            {device.location.building.name}
           </ThemedText>
         </View>
         <View style={styles.detailRow}>
           <MaterialIcons name="meeting-room" size={20} color={PrimaryColor} />
           <ThemedText numberOfLines={1} style={styles.detailText}>
-            {t("shared.device-attributes.room")}: {device.location.room_type}{" "}
-            {device.location.room_number}
+            {t("shared.device-attributes.room")}: {device.location.room.name}
           </ThemedText>
         </View>
         <View style={styles.detailRow}>

@@ -1,7 +1,7 @@
 import ThemedModal from "@/components/shared/ThemedModal";
 import { useTranslation } from "react-i18next";
 import { ThemedButton } from "@/components/shared/ThemedButton";
-import { ScrollView, StyleSheet, View } from "react-native";
+import { Alert, ScrollView, StyleSheet, View } from "react-native";
 import { Ticket } from "@/models/Ticket";
 import { ThemedText } from "@/components/shared/ThemedText";
 import { useLoading } from "@/hooks/useLoading";
@@ -25,7 +25,16 @@ export default function SubmitReportModal({
     setLoading(true);
     try {
       await sendTicket(ticket);
-      router.navigate("/(screens)/(tabs)");
+      Alert.alert(
+        t("devices.report.success-title"),
+        t("devices.report.success-message"),
+        [
+          {
+            text: "OK",
+            onPress: () => router.navigate("/(screens)/(tabs)"), // Navigate on press
+          },
+        ],
+      );
     } catch (error: any) {
       alert("Zammad is not available.");
     } finally {
@@ -41,10 +50,7 @@ export default function SubmitReportModal({
     >
       <View style={styles.container}>
         <ScrollView>
-          <ThemedText variant="semibold">
-            {ticket.title}
-            {"\n"}
-          </ThemedText>
+          <ThemedText variant="semibold">{ticket.title}</ThemedText>
           <ThemedText>{ticket.article.body}</ThemedText>
         </ScrollView>
         <ThemedButton

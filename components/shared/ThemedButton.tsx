@@ -9,6 +9,7 @@ type ThemedButtonProps = {
   size?: "default";
   variant?: "default";
   style?: ViewStyle;
+  disabled?: boolean;
 };
 
 export function ThemedButton({
@@ -16,12 +17,21 @@ export function ThemedButton({
   onPress,
   size = "default",
   variant = "default",
+  disabled = false,
   style,
 }: ThemedButtonProps) {
+  const disabledStyle: ViewStyle = { opacity: 0.5 };
+
   return (
     <Pressable
       onPress={onPress}
-      style={[sizeStyles[size], variantStyles[variant], style]}
+      disabled={disabled}
+      style={[
+        sizeStyles[size],
+        variantStyles[variant],
+        disabled && disabledStyle,
+        style,
+      ]}
     >
       <ThemedText
         size={size}

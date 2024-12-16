@@ -6,9 +6,14 @@ export type Device = {
   rollout: string;
   school: string;
   location: {
-    room_type: string;
-    room_number: string;
-    building: string;
+    room: {
+      id: number;
+      name: string;
+    };
+    building: {
+      id: number;
+      name: string;
+    };
   };
   product: {
     product_type: string;

@@ -1,10 +1,9 @@
 import { StyleSheet, View } from "react-native";
 import { CameraView } from "expo-camera";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useThemeColor } from "@/hooks/useThemeColor";
 import { LeftBound, RightBound } from "@/components/shared/Icons";
 import { useIsFocused } from "@react-navigation/core";
-import * as ScreenOrientation from "expo-screen-orientation";
 
 type BarcodeReaderProps = {
   onBarcodeScanned: (data: string) => void;

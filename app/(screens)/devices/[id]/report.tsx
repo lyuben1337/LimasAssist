@@ -100,7 +100,11 @@ export default function ReportScreen() {
             handleInputChange={handleInputChange}
           />
         </KeyboardAwareScrollView>
-        <ThemedButton label={t("devices.report.send")} onPress={handleSubmit} />
+        <ThemedButton
+          label={t("devices.report.send")}
+          disabled={!title}
+          onPress={handleSubmit}
+        />
       </ThemedView>
       {ticket && (
         <SubmitReportModal

@@ -50,7 +50,13 @@
       "phone": "Phone Number",
       "send": "Send",
       "summary": "Summary",
-      "submit": "Submit"
+      "submit": "Submit",
+      "success-title": "Successfully reported",
+      "success-message": "Your message has been successfully sent to the ticket system."
+    },
+    "update-location": {
+      "success-title": "Location successfully updated",
+      "success-message": "The device's room has been successfully updated."
     }
   },
   "errors": {

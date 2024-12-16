@@ -24,7 +24,7 @@ Geräteinformationen:
 - Kaufdatum: ${formatDate(new Date(device.purchase_date))}
 - Rollout: ${device.rollout}
 - Schule: ${device.school || "Gehört zum Gebäude"}
-- Standort: ${device.location.room_type} ${device.location.room_number}, ${device.location.building}
+- Standort: ${device.location.room.name}, ${device.location.building.name}
 - Produkt: ${device.product.product_type} von ${device.product.manufacturer}: ${device.product.name}
 - Beschreibung: ${productDescription || "Nicht verfügbar"}
 

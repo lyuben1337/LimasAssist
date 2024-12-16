@@ -50,7 +50,13 @@
       "phone": "Telefonummer",
       "send": "Melden",
       "summary": "Zusammenfassung",
-      "submit": "Einreichen"
+      "submit": "Einreichen",
+      "success-title": "Problem wurde erfolgreich gemeldet",
+      "success-message": "Ihre Nachricht wurde erfolgreich ans Ticketsystem gesendet."
+    },
+    "update-location": {
+      "success-title": "Ort wurde erfolgreich aktualisiert",
+      "success-message": "Raum des Geräts wurde erfolgreich aktualisiert."
     }
   },
   "errors": {
