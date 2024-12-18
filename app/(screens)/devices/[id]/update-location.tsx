@@ -1,5 +1,4 @@
 import { ThemedView } from "@/components/shared/ThemedView";
-import { ThemedText } from "@/components/shared/ThemedText";
 import { useLocalSearchParams } from "expo-router/build/hooks";
 import { router, Stack } from "expo-router";
 import React, { useEffect, useState } from "react";
@@ -47,6 +46,8 @@ export default function UpdateLocationScreen() {
         inventory_number: device.inventory_number,
         room_id: selectedRoom.id,
       });
+      setSelectedRoom(undefined);
+      setDevice(undefined);
       Alert.alert(
         t("devices.update-location.success-title"),
         t("devices.update-location.success-message"),

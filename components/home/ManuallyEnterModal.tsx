@@ -33,7 +33,10 @@ export default function ManuallyEnterModal({
         />
         <ThemedButton
           label={t("shared.search")}
-          onPress={() => onSubmit(inventoryNumber)}
+          onPress={() => {
+            onClose();
+            onSubmit(inventoryNumber);
+          }}
         />
       </View>
     </ThemedModal>
