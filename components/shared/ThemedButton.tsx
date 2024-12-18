@@ -1,7 +1,8 @@
-import { StyleSheet, Pressable, ViewStyle } from "react-native";
+import { StyleSheet, ViewStyle } from "react-native";
 
 import { PrimaryColor } from "@/constants/Colors";
 import { ThemedText } from "@/components/shared/ThemedText";
+import { ThemedPressable } from "@/components/shared/ThemedPressable";
 
 type ThemedButtonProps = {
   label: string;
@@ -23,7 +24,7 @@ export function ThemedButton({
   const disabledStyle: ViewStyle = { opacity: 0.5 };
 
   return (
-    <Pressable
+    <ThemedPressable
       onPress={onPress}
       disabled={disabled}
       style={[
@@ -41,7 +42,7 @@ export function ThemedButton({
       >
         {label}
       </ThemedText>
-    </Pressable>
+    </ThemedPressable>
   );
 }
 

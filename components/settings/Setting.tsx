@@ -3,6 +3,7 @@ import React, { ReactElement } from "react";
 import { ThemedText } from "@/components/shared/ThemedText";
 import { ChevronLeftIcon, SpecificIconProps } from "@/components/shared/Icons";
 import { Colors, NeutralColor, PrimaryColor } from "@/constants/Colors";
+import { ThemedPressable } from "@/components/shared/ThemedPressable";
 
 type SettingProps = {
   title: string;
@@ -20,7 +21,7 @@ export default function Setting({
   onPress,
 }: SettingProps) {
   return (
-    <Pressable onPress={onPress} style={styles.setting}>
+    <ThemedPressable onPress={onPress} style={styles.setting}>
       <View style={styles.titleContainer}>
         <View style={[styles.iconContainer, { backgroundColor: iconColor }]}>
           {React.cloneElement(icon, { color: Colors.light.background })}
@@ -33,7 +34,7 @@ export default function Setting({
           <ChevronLeftIcon color={Colors.light.tabIconDefault} />
         </View>
       </View>
-    </Pressable>
+    </ThemedPressable>
   );
 }
 

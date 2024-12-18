@@ -3,6 +3,7 @@ import React from "react";
 import { ThemedText } from "@/components/shared/ThemedText";
 import { CheckIcon } from "@/components/shared/Icons";
 import { PrimaryColor } from "@/constants/Colors";
+import { ThemedPressable } from "@/components/shared/ThemedPressable";
 
 interface OptionProps {
   title: string;
@@ -18,7 +19,7 @@ export default function Option({
   selected,
 }: OptionProps) {
   return (
-    <Pressable onPress={onPress} style={[styles.option]}>
+    <ThemedPressable onPress={onPress} style={[styles.option]}>
       <View>
         <ThemedText>{title}</ThemedText>
         {subtitle && (
@@ -32,7 +33,7 @@ export default function Option({
           <CheckIcon color={PrimaryColor} />
         </View>
       )}
-    </Pressable>
+    </ThemedPressable>
   );
 }
 
